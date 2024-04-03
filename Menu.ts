@@ -1,15 +1,29 @@
 ﻿import readlinesync = require("readline-sync");
 
+import { colors } from './src/util/Colors'; 
+import { ProdutoController } from "./src/Controller/ProdutoController";
+import { Celulares } from "./src/model/Celulares";
+import { Notebooks } from "./src/model/Notebooks";
+import { Videogames } from "./src/model/Videogames";
 
-import { colors } from './src/util/Colors';
 
 export function main() {   
 
     let opcao, id, tipo, preco: number;
-    let nome, marca, modelo, configuracoes: string;
+    let nome, marca, modelo, configuracao, games: string;
     let tipoProduto = ['Celulares', 'Video-Games', 'Notebooks'];
 
+    // Objeto da Classe ProdutoController
+    const produtoController: ProdutoController = new ProdutoController();
 
+    produtoController.cadastrar(new Celulares(produtoController.gerarId(),
+        "Samsung Galaxy", 1, 2000.00, "*8GB ram 128gb", "camera full HD", "FullHD"));
+
+    produtoController.cadastrar(new Notebooks(produtoController.gerarId(),
+        "Notebook Dell", 2, 3000.00, "Dell", "ultimate", "SSD 256GB"));
+
+    produtoController.cadastrar(new Videogames(produtoController.gerarId(),
+        "Playstation 5", 3, 4500.00, "-"));
 
 
     while (true) {
@@ -54,21 +68,25 @@ export function main() {
 
                 preco = readlinesync.questionFloat("Digite o preço ");              
               
-                switch(tipo){
+                switch(tipo) {
                     case 1:
-                        celulares = readlinesync.question("Digite o Nome do Aparelho: ");
-                        produtoController.cadastrar(new celulares(produtoController.gerarId(),
-                            nome, tipo, preco, marca, modelo));
+                        marca = readlinesync.question("Digite o Nome do Aparelho: ");
+                        modelo = readlinesync.question("Digite o Nome do Aparelho: ");
+                        configuracao = readlinesync.question("Digite o Nome do Aparelho: ");
+                        produtoController.cadastrar(new Celulares(produtoController.gerarId(),
+                            nome, tipo, preco, marca, modelo, configuracao));
                         break;
                     case 2:
-                        Notebooks = readlinesync.question("Digite o Nome do Aparelho: ");
-                        produtoController.cadastrar(new notebooks(produtoController.gerarId(),
-                            nome, tipo, preco, marca, modelo));
+                        modelo = readlinesync.question("Digite o Nome do Aparelho: ");
+                        marca = readlinesync.question("Digite o Nome do Aparelho: ");
+                        configuracao = readlinesync.question("Digite o Nome do Aparelho: ");
+                        produtoController.cadastrar(new Notebooks(produtoController.gerarId(),
+                            nome, tipo, preco, marca, modelo, configuracao));
                         break;    
                     case 3:
-                        Video-Games = readlinesync.question("Digite o Nome do Aparelho: ");
-                        produtoController.cadastrar(new videogames(produtoController.gerarId(),
-                            nome, tipo, preco, marca, modelo));    
+                        games = readlinesync.question("Digite o Nome do Aparelho: ");
+                        produtoController.cadastrar(new Videogames(produtoController.gerarId(),
+                           nome, tipo, preco, games));    
                 }
                 
                 keyPress()
@@ -88,7 +106,7 @@ export function main() {
 
                     id = readlinesync.questionInt("Digite o Id do Produto: ")
 
-                produtoContoller.procurarPorId(id);
+                produtoController.procurarPorId(id);
 
                 keyPress()
                 break;
@@ -97,9 +115,6 @@ export function main() {
                         "\n\nAtualizar dados do Produto\n\n", colors.reset);
 
                     id = readlinesync.questionInt("Digite o Id do Produto: ");    
-    
-                    console.log("Digite o Número da Conta: ")
-                    numero = readlinesync.questionInt("")
     
                     let produto = produtoController.buscarNoArray(id)
     
@@ -113,19 +128,25 @@ export function main() {
 
                     switch (tipo) {
                         case 1:
-                            celulares = readlinesync.question("Digite o Nome do Aparelho: ");
-                            produtoController.atualizar(new celulares(id,
-                                nome, tipo, preco, marca, modelo));
+                            modelo = readlinesync.question("Digite o Nome do Aparelho: ");
+                            marca = readlinesync.question("Digite o Nome do Aparelho: ");
+                            configuracao = readlinesync.question("Digite o Nome do Aparelho: ");
+                            produtoController.atualizar(new Celulares(id,
+                                nome, tipo, preco, marca, modelo, configuracao));
                             break;
                         case 2:
-                            Notebooks = readlinesync.question("Digite a Marca e o Modelo do Notebook: ");
-                            produtoController.atualizar(new notebooks(id,
-                                nome, tipo, preco, marca, modelo));
+                            modelo = readlinesync.question("Digite o Nome do Aparelho: ");
+                            marca = readlinesync.question("Digite o Nome do Aparelho: ");
+                            configuracao = readlinesync.question("Digite o Nome do Aparelho: ");
+                            produtoController.atualizar(new Notebooks(id,
+                                nome, tipo, preco, marca, modelo, configuracao));
                             break;    
                         case 3:
-                            Video-Games = readlinesync.question("Digite a marca do VideoGame: ");
-                            produtoController.atualizar(new videogames(id,
-                                nome, tipo, preco, marca, modelo));    
+                            modelo = readlinesync.question("Digite o Nome do Aparelho: ");
+                            games = readlinesync.question("Digite o Nome do Aparelho: ");
+                            
+                            produtoController.atualizar(new Videogames(id,
+                                nome, tipo, preco, games));    
                     }
                 
                 }else
@@ -146,7 +167,7 @@ export function main() {
                             }
                         }
                         
-}    
+                    }
          
 /* Função com os dados da pessoa desenvolvedora */
 function sobre(): void {
