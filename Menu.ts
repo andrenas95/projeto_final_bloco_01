@@ -17,13 +17,13 @@ export function main() {
     const produtoController: ProdutoController = new ProdutoController();
 
     produtoController.cadastrar(new Celulares(produtoController.gerarId(),
-        "Samsung Galaxy", 1, 2000.00, "*8GB ram 128gb", "camera full HD", "FullHD"));
+        "Samsung Galaxy S24", 1, 2000.00, "*8GB ram 128gb", "camera full HD", "FullHD"));
 
     produtoController.cadastrar(new Notebooks(produtoController.gerarId(),
-        "Notebook Dell", 2, 3000.00, "Dell", "ultimate", "SSD 256GB"));
+        "Notebook Dell", 2, 3000.00, "Dell", "Inspiron 15", "SSD 256GB, 8GB RAM Precessador i7 3.00 Ghz 10ª geração"));
 
     produtoController.cadastrar(new Videogames(produtoController.gerarId(),
-        "Playstation 5", 3, 4500.00, "-"));
+        "PS5 Edição Digital", 3, 4500.00, "Console PS5 Edição Digital é uma versão totalmente digital do console PS5, sem o leitor de discos Blu-ray™ Ultra HD. "));
 
 
     while (true) {
@@ -128,16 +128,16 @@ export function main() {
 
                     switch (tipo) {
                         case 1:
-                            modelo = readlinesync.question("Digite o Nome do Aparelho: ");
-                            marca = readlinesync.question("Digite o Nome do Aparelho: ");
-                            configuracao = readlinesync.question("Digite o Nome do Aparelho: ");
+                            modelo = readlinesync.question("Digite o modelo do Aparelho: ");
+                            marca = readlinesync.question("Digite a Marca: ");
+                            configuracao = readlinesync.question("Digite a Configuracao do Aparelho: ");
                             produtoController.atualizar(new Celulares(id,
                                 nome, tipo, preco, marca, modelo, configuracao));
                             break;
                         case 2:
-                            modelo = readlinesync.question("Digite o Nome do Aparelho: ");
-                            marca = readlinesync.question("Digite o Nome do Aparelho: ");
-                            configuracao = readlinesync.question("Digite o Nome do Aparelho: ");
+                            modelo = readlinesync.question("Digite o Modelo do Aparelho: ");
+                            marca = readlinesync.question("Digite a Marca do Aparelho: ");
+                            configuracao = readlinesync.question("Digite a configuração Aparelho: ");
                             produtoController.atualizar(new Notebooks(id,
                                 nome, tipo, preco, marca, modelo, configuracao));
                             break;    
@@ -168,7 +168,7 @@ export function main() {
                         }
                         
                     }
-         
+
 /* Função com os dados da pessoa desenvolvedora */
 function sobre(): void {
     console.log("\n*****************************************************");
