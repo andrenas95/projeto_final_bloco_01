@@ -35,7 +35,7 @@ export class ProdutoController implements ProdutoRepository{
     // na Collection listaprodutos
     cadastrar(produto: Produto): void {
         this.listaProdutos.push(produto);
-        console.log("A produto foi adicionado!")
+        console.log("O produto foi adicionado!")
     }
 
     // Método para atualizar os dados de uma produto
@@ -45,7 +45,7 @@ export class ProdutoController implements ProdutoRepository{
 
         if(buscaProduto !== null){
             this.listaProdutos[this.listaProdutos.indexOf(buscaProduto)] = produto;
-            console.log(`A produto número ${produto.id} foi Atualizado com êxito!`)
+            console.log(`O produto número ${produto.id} foi Atualizado com êxito!`)
         }else
             console.log("\nproduto não foi Encontrado!")
     }
@@ -57,9 +57,9 @@ export class ProdutoController implements ProdutoRepository{
 
         if(buscaProduto !== null){
             this.listaProdutos.splice(this.listaProdutos.indexOf(buscaProduto), 1)
-            console.log(`A produto número ${id} foi Excluído com êxito!`)
+            console.log(`O produto número ${id} foi Excluído com êxito!`)
         }else
-            console.log("\nproduto não foi Encontrado!")
+            console.log("\nProduto não foi Encontrado!")
     }
 
 

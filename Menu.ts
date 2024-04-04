@@ -17,13 +17,13 @@ export function main() {
     const produtoController: ProdutoController = new ProdutoController();
 
     produtoController.cadastrar(new Celulares(produtoController.gerarId(),
-        "Samsung Galaxy S24", 1, 2000.00, "*8GB ram 128gb", "camera full HD", "FullHD"));
+        "Samsung Galaxy S24", 1, 2000.00, "Samsung","Galaxy S","*8GB ram 128gb camera full HD"));
 
     produtoController.cadastrar(new Notebooks(produtoController.gerarId(),
         "Notebook Dell", 2, 3000.00, "Dell", "Inspiron 15", "SSD 256GB, 8GB RAM Precessador i7 3.00 Ghz 10ª geração"));
 
     produtoController.cadastrar(new Videogames(produtoController.gerarId(),
-        "PS5 Edição Digital", 3, 4500.00, "Console PS5 Edição Digital é uma versão totalmente digital do console PS5, sem o leitor de discos Blu-ray™ Ultra HD. "));
+        "PS5 Edição Digital", 3, 4500.00,"Sony", "Console PS5 Edição Digital é uma versão totalmente digital do console PS5, sem o leitor de discos Blu-ray™ Ultra HD. "));
 
 
     while (true) {
@@ -70,23 +70,25 @@ export function main() {
               
                 switch(tipo) {
                     case 1:
-                        marca = readlinesync.question("Digite o Nome do Aparelho: ");
-                        modelo = readlinesync.question("Digite o Nome do Aparelho: ");
-                        configuracao = readlinesync.question("Digite o Nome do Aparelho: ");
+                        marca = readlinesync.question("Digite a Marca do Aparelho: ");
+                        modelo = readlinesync.question("Digite o Modelo do Aparelho: ");
+                        configuracao = readlinesync.question("Digite a Configuracao do Aparelho: ");
                         produtoController.cadastrar(new Celulares(produtoController.gerarId(),
                             nome, tipo, preco, marca, modelo, configuracao));
                         break;
                     case 2:
-                        modelo = readlinesync.question("Digite o Nome do Aparelho: ");
-                        marca = readlinesync.question("Digite o Nome do Aparelho: ");
-                        configuracao = readlinesync.question("Digite o Nome do Aparelho: ");
+                        marca = readlinesync.question("Digite a Marca do Aparelho: ");
+                        modelo = readlinesync.question("Digite o modelo do Aparelho: ");
+                        configuracao = readlinesync.question("Digite a configuração do Aparelho: ");
                         produtoController.cadastrar(new Notebooks(produtoController.gerarId(),
                             nome, tipo, preco, marca, modelo, configuracao));
                         break;    
                     case 3:
-                        games = readlinesync.question("Digite o Nome do Aparelho: ");
+                        games = readlinesync.question("Digite o Nome do Console: ");
+                        games = readlinesync.question("Digite o tipo do Console: ");
+                        configuracao = readlinesync.question("Digite a configuração do Aparelho: ");
                         produtoController.cadastrar(new Videogames(produtoController.gerarId(),
-                           nome, tipo, preco, games));    
+                           nome, tipo, preco, games, configuracao));    
                 }
                 
                 keyPress()
@@ -128,25 +130,25 @@ export function main() {
 
                     switch (tipo) {
                         case 1:
-                            modelo = readlinesync.question("Digite o modelo do Aparelho: ");
                             marca = readlinesync.question("Digite a Marca: ");
+                            modelo = readlinesync.question("Digite o modelo do Aparelho: ");
                             configuracao = readlinesync.question("Digite a Configuracao do Aparelho: ");
                             produtoController.atualizar(new Celulares(id,
                                 nome, tipo, preco, marca, modelo, configuracao));
                             break;
                         case 2:
-                            modelo = readlinesync.question("Digite o Modelo do Aparelho: ");
-                            marca = readlinesync.question("Digite a Marca do Aparelho: ");
-                            configuracao = readlinesync.question("Digite a configuração Aparelho: ");
+                            marca = readlinesync.question("Digite a Marca: ");
+                            modelo = readlinesync.question("Digite o modelo do Aparelho: ");
+                            configuracao = readlinesync.question("Digite a Configuracao do Aparelho: ");
                             produtoController.atualizar(new Notebooks(id,
                                 nome, tipo, preco, marca, modelo, configuracao));
                             break;    
                         case 3:
-                            modelo = readlinesync.question("Digite o Nome do Aparelho: ");
-                            games = readlinesync.question("Digite o Nome do Aparelho: ");
-                            
+                            games = readlinesync.question("Digite o Nome do Console: ");
+                            games = readlinesync.question("Digite o tipo do Console: ");
+                            configuracao = readlinesync.question("Digite a configuração do Aparelho: ");
                             produtoController.atualizar(new Videogames(id,
-                                nome, tipo, preco, games));    
+                                nome, tipo, preco, games, configuracao));    
                     }
                 
                 }else
@@ -174,7 +176,7 @@ function sobre(): void {
     console.log("\n*****************************************************");
     console.log("Projeto Desenvolvido por: André Luiz Nascimento Pinto");
     console.log("Generation Brasil - andrenas.nascimento95@gmail.com");
-    console.log("https://github.com/andrenas95/Generation/tree/classe_conta");
+    console.log("https://github.com/andrenas95/projeto_final_bloco_01/");
     console.log("*******************************************************");
 }
 
